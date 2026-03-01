@@ -4,3 +4,6 @@
 # Allow only the portfolio resume PDF
 *.pdf
 !Ayush_Srivastava_Resume.pdf
+
+# Claude instructions (local only)
+CLAUDE.md
