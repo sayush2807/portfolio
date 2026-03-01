@@ -1,5 +1,6 @@
 # macOS
 .DS_Store
 
-# Resume PDF — keep off public GitHub
+# Allow only the portfolio resume PDF
 *.pdf
+!Ayush_Srivastava_Resume.pdf
