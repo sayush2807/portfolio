@@ -1172,10 +1172,16 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
   error.style.display = 'none';
 
   try {
+    const data = {
+      name:    form.querySelector('[name="name"]').value,
+      email:   form.querySelector('[name="email"]').value,
+      subject: form.querySelector('[name="subject"]').value,
+      message: form.querySelector('[name="message"]').value,
+    };
     const res = await fetch('https://formspree.io/f/xkovaewb', {
       method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(data),
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
     });
     if (res.ok) {
       success.style.display = 'block';
