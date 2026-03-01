@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Resume PDF — keep off public GitHub
+*.pdf
