@@ -567,6 +567,154 @@
       .hero-actions { flex-direction: column; }
       .btn-primary, .btn-secondary { justify-content: center; }
     }
+
+    /* ===== CHATBOT WIDGET ===== */
+    .chat-bubble {
+      position: fixed; bottom: 28px; right: 28px; z-index: 2000;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--gradient-1); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #fff;
+      box-shadow: 0 8px 24px rgba(56,189,248,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .chat-bubble:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(56,189,248,0.5); }
+    .chat-bubble .chat-bubble-dot {
+      position: absolute; top: 3px; right: 3px;
+      width: 12px; height: 12px; background: var(--accent-green);
+      border-radius: 50%; border: 2px solid var(--bg-primary);
+      animation: pulse 2s infinite;
+    }
+
+    .chat-window {
+      position: fixed; bottom: 96px; right: 28px; z-index: 2000;
+      width: 370px; max-height: 560px;
+      background: var(--bg-card); border: 1px solid var(--border-bright);
+      border-radius: 20px; display: flex; flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      transform: scale(0.92) translateY(16px);
+      opacity: 0; pointer-events: none;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      transform-origin: bottom right;
+    }
+    .chat-window.open {
+      transform: scale(1) translateY(0);
+      opacity: 1; pointer-events: all;
+    }
+
+    .chat-header {
+      padding: 16px 18px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+      border-radius: 20px 20px 0 0;
+      background: var(--bg-secondary);
+    }
+    .chat-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--gradient-1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .chat-header-info { flex: 1; }
+    .chat-header-name { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); }
+    .chat-header-status { font-size: 0.72rem; color: var(--accent-green); display: flex; align-items: center; gap: 5px; }
+    .chat-header-status::before { content: ''; width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%; display: inline-block; }
+    .chat-close {
+      background: none; border: none; color: var(--text-muted);
+      font-size: 1.1rem; cursor: pointer; padding: 4px; border-radius: 6px;
+      transition: color 0.2s;
+    }
+    .chat-close:hover { color: var(--text-primary); }
+
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 12px;
+      min-height: 0;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .chat-msg { display: flex; gap: 8px; align-items: flex-end; max-width: 88%; }
+    .chat-msg.user { margin-left: auto; flex-direction: row-reverse; }
+
+    .chat-msg-avatar {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      background: var(--gradient-1); display: flex; align-items: center;
+      justify-content: center; font-size: 0.65rem; font-weight: 700; color: #fff;
+    }
+    .chat-msg.user .chat-msg-avatar { background: var(--bg-secondary); border: 1px solid var(--border-bright); font-size: 0.8rem; }
+
+    .chat-msg-bubble {
+      padding: 10px 14px; border-radius: 16px; font-size: 0.86rem;
+      line-height: 1.55; color: var(--text-primary);
+    }
+    .chat-msg.bot .chat-msg-bubble {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user .chat-msg-bubble {
+      background: var(--gradient-1); color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-typing {
+      display: flex; gap: 8px; align-items: flex-end;
+      opacity: 0; transition: opacity 0.2s; max-width: 88%;
+    }
+    .chat-typing.visible { opacity: 1; }
+    .chat-typing-dots {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 16px; border-bottom-left-radius: 4px;
+      padding: 12px 16px; display: flex; gap: 5px; align-items: center;
+    }
+    .chat-typing-dots span {
+      width: 6px; height: 6px; background: var(--text-muted);
+      border-radius: 50%; animation: typingBounce 1.2s infinite;
+    }
+    .chat-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .chat-input-row {
+      padding: 12px 14px; border-top: 1px solid var(--border);
+      display: flex; gap: 10px; align-items: center; flex-shrink: 0;
+      border-radius: 0 0 20px 20px;
+    }
+    .chat-input {
+      flex: 1; background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px; color: var(--text-primary);
+      font-family: 'Inter', sans-serif; font-size: 0.86rem; outline: none;
+      transition: border-color 0.2s; resize: none; max-height: 100px;
+    }
+    .chat-input:focus { border-color: var(--accent-blue); }
+    .chat-input::placeholder { color: var(--text-muted); }
+    .chat-send {
+      width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+      background: var(--gradient-1); border: none; color: #fff;
+      font-size: 0.9rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .chat-send:hover { transform: scale(1.08); box-shadow: 0 4px 14px rgba(56,189,248,0.4); }
+    .chat-send:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .chat-suggestions {
+      display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px;
+    }
+    .chat-suggestion {
+      padding: 5px 12px; background: transparent;
+      border: 1px solid var(--border-bright); border-radius: 100px;
+      font-size: 0.74rem; color: var(--text-secondary); cursor: pointer;
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .chat-suggestion:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(56,189,248,0.06); }
+
+    @media (max-width: 480px) {
+      .chat-window { width: calc(100vw - 24px); right: 12px; bottom: 88px; }
+      .chat-bubble { bottom: 20px; right: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -1289,6 +1437,236 @@ new IntersectionObserver(entries => {
     });
   }, { threshold: 0.4 });
   sections.forEach(s => obs.observe(s));
+})();
+</script>
+
+<!-- ===== CHATBOT WIDGET ===== -->
+<button class="chat-bubble" id="chatBubble" aria-label="Chat with Ayush's AI Assistant">
+  <i class="fas fa-comment-dots"></i>
+  <span class="chat-bubble-dot"></span>
+</button>
+
+<div class="chat-window" id="chatWindow" role="dialog" aria-label="Ayush's AI Assistant">
+  <div class="chat-header">
+    <div class="chat-avatar">AI</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Ayush's AI Assistant</div>
+      <div class="chat-header-status">Online</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="chat-msg-avatar">AI</div>
+      <div class="chat-msg-bubble">Hi! I'm Ayush's AI Assistant 👋 I know everything about his background — experience, projects, skills, and more. What would you like to know?</div>
+    </div>
+  </div>
+
+  <div class="chat-typing" id="chatTyping">
+    <div class="chat-msg-avatar">AI</div>
+    <div class="chat-typing-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="chat-suggestions" id="chatSuggestions">
+    <button class="chat-suggestion">Current role?</button>
+    <button class="chat-suggestion">Top skills?</button>
+    <button class="chat-suggestion">Published research?</button>
+    <button class="chat-suggestion">Education?</button>
+  </div>
+
+  <div class="chat-input-row">
+    <textarea class="chat-input" id="chatInput" placeholder="Ask me anything about Ayush…" rows="1"></textarea>
+    <button class="chat-send" id="chatSend" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const GEMINI_KEY = 'REDACTED_API_KEY';
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
+
+  const SYSTEM_PROMPT = `You are Ayush's AI Assistant — a friendly, concise assistant embedded in Ayush Srivastava's personal portfolio website. Answer questions about Ayush using only the information below. If asked something outside this scope, politely say you only know about Ayush's professional background.
+
+== ABOUT ==
+Name: Ayush Srivastava
+Email: sayush2807@gmail.com
+LinkedIn: linkedin.com/in/sayush2807
+GitHub: github.com/sayush2807
+Location: San Francisco, CA
+
+== EDUCATION ==
+- M.S. in Data Science, University of San Francisco (Jul 2025 – Jul 2026)
+- M.Sc. Mathematics & B.E. Engineering, BITS Pilani (Aug 2016 – May 2021)
+
+== EXPERIENCE ==
+1. Data Scientist Intern — LexisNexis USA (Dec 2025 – Present, Remote, SF Bay Area)
+   - Designed and deployed an API-driven LLM-powered legal document summarization pipeline with human-in-the-loop evaluation, reducing manual review time by 60–70%.
+
+2. Senior Data Engineer — Axtria – Ingenious Insights (May 2023 – May 2025, Gurgaon, India)
+   - Led ETL development across 6+ domains, integrating 10+ reports into Tableau via API wrappers.
+   - Processed 20M+ records from 8+ vendors, generating 30+ actionable insights for 6+ pharma products.
+   - Boosted pipeline efficiency by 40% via SQL, Python, Matillion, AWS Redshift automation.
+   - Validated pipelines with 100+ JIRA test cases.
+
+3. Data Engineer — Axtria (May 2022 – Apr 2023)
+   - Built Tableau dashboards for 20+ KPIs across 4+ teams, improving sprint planning by 60%.
+   - Led 40+ client discussions across 4 projects.
+   - Improved BI accuracy by 15% via data reconciliation.
+
+4. Data Analyst — Axtria (Jul 2021 – Apr 2022)
+   - Managed 100+ KPIs across 27+ dashboards for 35+ sales reps.
+   - Led 5+ weekly EDA-based ad-hoc requests.
+
+5. Data Scientist Intern — Sequretek IT Solutions (May 2020 – Jul 2020, Remote)
+   - Built VAE and LSTM models for unsupervised anomaly detection on 1M+ Active Directory event logs across 150+ predictors to detect cyberattacks.
+
+6. Teaching Assistant — Coding Ninjas (Jul 2019 – Nov 2019, New Delhi)
+   - Supported students in Data Structures & Algorithms (C++).
+
+== SKILLS ==
+Languages: Python, SQL, C/C++, MATLAB
+AI/ML: PyTorch, Hugging Face Transformers, QLoRA, BitsAndBytes, FAISS, Scikit-Learn, TensorFlow, Keras, Dlib
+Data/Cloud: AWS, Redshift, Matillion, Tableau, NumPy, Pandas, Matplotlib, NLTK, Linux
+Statistical Models: Linear/Logistic Regression, Decision Trees, Random Forests, K-Means, PCA, LSTM, GRU, VAE
+
+== PROJECTS ==
+1. Legal Holding Generation via RAG & Fine-Tuned LLMs (Jul–Aug 2025)
+   - Mistral 7B on LexGLUE with FAISS + Legal-BERT (768d) embeddings; QLoRA 4-bit quantization (28GB → 3.5GB); cosine similarity 0.8962.
+
+2. Real-Time Driver Drowsiness Detection — Published in Springer CVIP 2020
+   - Conv1D-GRU yawn detector; 99.97% validation accuracy; 30 FPS real-time on AffectNet (1M records).
+   - DOI: https://doi.org/10.1007/978-981-16-1103-2_42
+
+3. Structural Damage Detection via CNN & Transfer Learning
+   - VGG16 on 2,600+ images; 91.47% test accuracy vs 58.7% baseline CNN.
+
+4. Traffic Flow Prediction (LSTM, GRU, MLP)
+   - California PeMS dataset (12,000+ points); LSTM RMSE 9.81, R² 0.9398.
+
+5. Face Generation with DCGAN (Udacity)
+   - CelebA dataset; Discriminator loss 0.06, Generator loss 0.56.
+
+6. TV Script Generation with LSTM-RNN
+   - Trained on 9 seasons of Seinfeld scripts; generates coherent multi-character dialogues.
+
+7. Neural Networks vs ANFIS — Water Storage Prediction
+   - Mettur Dam data (2001–2013); LSTM RMSE 7.87 vs ANFIS 8.12.
+
+8. Dog Breed Classification (CNNs + Transfer Learning, PyTorch)
+   - Human-to-breed matching pipeline; modular real-time inference.
+
+== CERTIFICATIONS ==
+- Deep Learning Specialization — Deeplearning.ai / Coursera (2020)
+- TensorFlow in Practice Specialization — DeepLearning.AI / Coursera (2020)
+- Machine Learning & DSA in C++ — Coding Ninjas (2019)
+
+== ACHIEVEMENTS ==
+- 1st Place, Cricket Tournament — BITS Open Sports Meet (BOSM), 2018
+- 1st Place (2×), Badminton — Intra-BITS Open Sports Meet, 2017 & 2019
+- Selected to represent Mount Carmel School at Kennedy Space Center, NASA, Florida, 2013
+- Gold Medalist, National Abacus Championship — BrainoBrain, 2010
+
+Keep responses concise (2–4 sentences max unless a list is clearly better). Be warm and professional. Never make up facts not listed above.`;
+
+  const history = [];
+
+  /* Toggle chat */
+  const bubble = document.getElementById('chatBubble');
+  const win    = document.getElementById('chatWindow');
+  const closeBtn = document.getElementById('chatClose');
+
+  bubble.addEventListener('click', () => win.classList.toggle('open'));
+  closeBtn.addEventListener('click', () => win.classList.remove('open'));
+
+  /* Suggestion chips */
+  document.querySelectorAll('.chat-suggestion').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sendMessage(btn.textContent.trim());
+      document.getElementById('chatSuggestions').style.display = 'none';
+    });
+  });
+
+  /* Send on button click or Enter (Shift+Enter = newline) */
+  const input  = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+
+  sendBtn.addEventListener('click', () => submit());
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); }
+  });
+
+  /* Auto-resize textarea */
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+  });
+
+  function submit() {
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('chatSuggestions').style.display = 'none';
+    sendMessage(text);
+  }
+
+  function addMessage(role, text) {
+    const messages = document.getElementById('chatMessages');
+    const wrap = document.createElement('div');
+    wrap.className = `chat-msg ${role}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'chat-msg-avatar';
+    avatar.textContent = role === 'bot' ? 'AI' : '👤';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+
+    wrap.appendChild(avatar);
+    wrap.appendChild(bubble);
+    messages.appendChild(wrap);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function setTyping(visible) {
+    document.getElementById('chatTyping').classList.toggle('visible', visible);
+    const messages = document.getElementById('chatMessages');
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function sendMessage(text) {
+    addMessage('user', text);
+    history.push({ role: 'user', parts: [{ text }] });
+    setTyping(true);
+    sendBtn.disabled = true;
+
+    try {
+      const res = await fetch(GEMINI_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents: history,
+          generationConfig: { temperature: 0.7, maxOutputTokens: 400 }
+        })
+      });
+
+      const data = await res.json();
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+        || "Sorry, I couldn't fetch a response. Please try again.";
+
+      history.push({ role: 'model', parts: [{ text: reply }] });
+      setTyping(false);
+      addMessage('bot', reply);
+    } catch {
+      setTyping(false);
+      addMessage('bot', "I'm having trouble connecting right now. Please try again shortly.");
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
 })();
 </script>
 </body>
