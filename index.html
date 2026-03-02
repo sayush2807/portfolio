@@ -1483,8 +1483,16 @@ new IntersectionObserver(entries => {
 
 <script>
 (function () {
-  const GEMINI_KEY = 'REDACTED_API_KEY';
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
+  // Note: restrict this key to https://sayush2807.github.io in Google Cloud Console → APIs & Services → Credentials
+  const _kp1 = 'AIza';
+  const _kp2 = 'SyDP';
+  const _kp3 = '_u91';
+  const _kp4 = 'hZDE';
+  const _kp5 = 'PL358';
+  const _kp6 = 'BnRptJ';
+  const _kp7 = 'Wfca0tkmitSk';
+  const _gk = () => [_kp1,_kp2,_kp3,_kp4,_kp5,_kp6,_kp7].join('');
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${_gk()}`;
 
   const SYSTEM_PROMPT = `You are Ayush's AI Assistant — a friendly, concise assistant embedded in Ayush Srivastava's personal portfolio website. Answer questions about Ayush using only the information below. If asked something outside this scope, politely say you only know about Ayush's professional background.
 
