@@ -850,15 +850,31 @@
           <div class="proj-icon">🏛️</div>
           <span class="badge badge-research">Research</span>
         </div>
-        <div class="proj-title">Legal Holding Generation via RAG &amp; Fine-Tuned LLMs</div>
-        <div class="proj-desc">Built a RAG pipeline on LexGLUE using Mistral 7B with 3 retrieval strategies. Implemented FAISS semantic retrieval with Legal-BERT (768d) embeddings. Quantized to 4-bit with QLoRA, compressing model from 28 GB to 3.5 GB.</div>
+        <div class="proj-title">Legal AI Assistant — RAG &amp; QLoRA on LexGLUE</div>
+        <div class="proj-desc">QLoRA fine-tune of Mistral 7B on LexGLUE CaseHOLD with three RAG strategies over Legal-BERT FAISS indexes. Approximately 33.5M trainable parameters; weights compressed from ~28 GB (fp32) to ~3.5 GB via 4-bit NF4 quantization.</div>
         <div class="proj-tech">
-          <span>Mistral 7B</span><span>RAG</span><span>FAISS</span><span>Legal-BERT</span><span>QLoRA</span><span>LexGLUE</span>
+          <span>Mistral 7B</span><span>QLoRA</span><span>RAG</span><span>FAISS</span><span>Legal-BERT</span><span>LexGLUE</span>
         </div>
-        <div class="proj-metric">Cosine similarity: <span class="hi">0.8962</span> · Compressed: <span class="hi">28 GB → 3.5 GB</span></div>
+        <div class="proj-metric">Cosine (Legal-BERT): <span class="hi">0.8962</span> · ROUGE-L: <span class="hi">0.2113</span>
+          &nbsp;<a href="https://github.com/sayush2807/legal-ai-assistant" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
       </div>
 
-      <div class="proj-card reveal d1" data-category="cv">
+      <div class="proj-card reveal d1" data-category="nlp">
+        <div class="proj-head">
+          <div class="proj-icon">🍳</div>
+        </div>
+        <div class="proj-title">Cuisine Classifier — FastAPI + MLflow + GCP</div>
+        <div class="proj-desc">Recipe-to-cuisine classifier on 39,774 Yummly recipes from public Kaggle dataset. End-to-end ML Ops pipeline: training notebook with MLflow tracking, FastAPI inference service, Dockerized deployment on GCP. USF MSDS ML Ops course project.</div>
+        <div class="proj-tech">
+          <span>scikit-learn</span><span>FastAPI</span><span>Docker</span><span>MLflow</span><span>GCP</span>
+        </div>
+        <div class="proj-metric">Test accuracy: <span class="hi">78.72%</span> · 39,774 recipes
+          &nbsp;<a href="https://github.com/sayush2807/cuisine-classifier" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal d2" data-category="cv">
         <div class="proj-head">
           <div class="proj-icon">🚗</div>
           <span class="badge badge-pub">Published · Springer</span>
@@ -874,7 +890,7 @@
         </div>
       </div>
 
-      <div class="proj-card reveal d2" data-category="cv">
+      <div class="proj-card reveal d3" data-category="cv">
         <div class="proj-head"><div class="proj-icon">🏗️</div></div>
         <div class="proj-title">Structural Damage Detection via CNN &amp; Transfer Learning</div>
         <div class="proj-desc">Image classification pipeline detecting 4 structural damage types using VGG16 transfer learning on 2,600+ images. Data augmentation improved minority class representation from 8% to 26%.</div>
