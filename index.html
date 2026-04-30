@@ -764,7 +764,11 @@
           <div class="tl-company">LexisNexis USA</div>
           <div class="tl-loc">📍 San Francisco Bay Area, CA (Remote)</div>
           <ul class="tl-bullets">
-            <li>Designed and deployed an API-driven LLM-powered legal document summarization pipeline incorporating human-in-the-loop evaluation, reducing manual review time by <strong>60–70%</strong>.</li>
+            <li>Deployed LLM-powered summarization system via Python and proxy API, raising performance score from <strong>95.74%</strong> to <strong>100%</strong>.</li>
+            <li>Benchmarked Claude Sonnet vs Haiku on cost, output quality, and latency across <strong>20+ test cases</strong>, increasing accuracy from <strong>75%</strong> to <strong>91%</strong>.</li>
+            <li>Built a batch script for <strong>100+ PDF, DOCX, HTML</strong> files via pdfplumber, docx2txt, BeautifulSoup, cutting prep time by <strong>90%</strong>.</li>
+            <li>Extended the production pipeline with a new Python task generating and mapping UUIDs to route dual LLM calls and deliver structured outputs to the frontend.</li>
+            <li>Drove accuracy improvements by incorporating SME feedback cycles to iteratively refine LLM outputs across <strong>2+ projects</strong>.</li>
           </ul>
         </div>
       </div>
@@ -776,9 +780,10 @@
           <div class="tl-company">Axtria – Ingenious Insights</div>
           <div class="tl-loc">📍 Gurgaon, India</div>
           <ul class="tl-bullets">
-            <li>Led ETL development and feature engineering across <strong>6+ domains</strong>, integrating <strong>10+ reports</strong> into Tableau via productized API wrappers.</li>
+            <li>Led ETL development and feature engineering across <strong>6+ domains</strong>, productizing API wrappers within an in-house ETL product to integrate <strong>10+ reports</strong> into Tableau.</li>
             <li>Processed and modeled <strong>20M+ records</strong> from 8+ vendors, generating <strong>30+ actionable insights</strong> for 6+ pharmaceutical products.</li>
             <li>Optimized data ingestion pipelines, boosting efficiency by <strong>40%</strong> via automation with SQL, Python, Matillion, and AWS Redshift.</li>
+            <li>Collaborated with cross-functional teams to automate and integrate the delivery of <strong>30+ Excel-based reports</strong> into <strong>5+ dynamic dashboards</strong> using Python and SQL.</li>
             <li>Performed data quality validation with <strong>100+ JIRA test cases</strong> to ensure defect-free pipelines.</li>
           </ul>
         </div>
@@ -850,11 +855,11 @@
           <span class="badge badge-research">Research</span>
         </div>
         <div class="proj-title">Legal AI Assistant — RAG &amp; QLoRA on LexGLUE</div>
-        <div class="proj-desc">QLoRA fine-tune of Mistral 7B on LexGLUE CaseHOLD with three RAG strategies over Legal-BERT FAISS indexes. Approximately 33.5M trainable parameters; weights compressed from ~28 GB (fp32) to ~3.5 GB via 4-bit NF4 quantization.</div>
+        <div class="proj-desc">RAG pipeline on LexGLUE CaseHOLD using Mistral 7B with three retrieval strategies. FAISS semantic retrieval over Legal-BERT (768d) embeddings. Quantized to 4-bit with QLoRA, training 33.5M params, reducing model size from 28 GB to 3.5 GB.</div>
         <div class="proj-tech">
           <span>Mistral 7B</span><span>QLoRA</span><span>RAG</span><span>FAISS</span><span>Legal-BERT</span><span>LexGLUE</span>
         </div>
-        <div class="proj-metric">Cosine (Legal-BERT): <span class="hi">0.8962</span> · ROUGE-L: <span class="hi">0.2113</span>
+        <div class="proj-metric">Cosine similarity: <span class="hi">0.8962</span> · ROUGE-L: <span class="hi">0.2113</span> · 200 test cases
           &nbsp;<a href="https://github.com/sayush2807/legal-ai-assistant" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
       </div>
@@ -871,6 +876,31 @@
         <div class="proj-metric">Test accuracy: <span class="hi">78.72%</span> · 39,774 recipes
           &nbsp;<a href="https://github.com/sayush2807/cuisine-classifier" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
+      </div>
+
+      <div class="proj-card reveal d2" data-category="ts">
+        <div class="proj-head">
+          <div class="proj-icon">🏥</div>
+          <span class="badge badge-research">Research</span>
+        </div>
+        <div class="proj-title">ER Vital Signs Prediction</div>
+        <div class="proj-desc">Finished 2nd in class competition forecasting ER patient vital signs on 14,420 observations across 1,596 patients. 30 LightGBM models with zero tuned post-processing parameters. Two-model residual architecture combining a GRU sequence model and LightGBM ensemble under Huber loss.</div>
+        <div class="proj-tech">
+          <span>LightGBM</span><span>GRU</span><span>PyTorch</span><span>GroupKFold</span><span>Python</span>
+        </div>
+        <div class="proj-metric">520+ features · adversarial AUC <span class="hi">0.9998</span> under GroupKFold by patient</div>
+      </div>
+
+      <div class="proj-card reveal d3" data-category="ts">
+        <div class="proj-head">
+          <div class="proj-icon">💳</div>
+        </div>
+        <div class="proj-title">Scalable Fraud Detection — Spark + Airflow on GCP</div>
+        <div class="proj-desc">Trained 4 Spark MLlib classifiers (Logistic Regression, Decision Tree, Random Forest, GBT) on 6M+ transactions; GBT achieved ROC-AUC 0.9994 on 1.27M test rows. Built distributed training pipeline on GCP Dataproc with Apache Spark, orchestrated via Airflow, with raw data in GCS and predictions in MongoDB Atlas.</div>
+        <div class="proj-tech">
+          <span>PySpark</span><span>Spark MLlib</span><span>GCP Dataproc</span><span>Airflow</span><span>MongoDB</span>
+        </div>
+        <div class="proj-metric">ROC-AUC: <span class="hi">0.9994</span> · 6M+ transactions · 0.13% class imbalance handled via stratified undersampling</div>
       </div>
 
       <div class="proj-card reveal d2" data-category="cv">
