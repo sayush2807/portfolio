@@ -607,7 +607,7 @@
       <span class="first">Ayush</span><br>
       <span class="last">Srivastava</span>
     </h1>
-    <div class="hero-roles"><span id="typed-text"></span><span class="typed-cursor">|</span></div>
+    <div class="hero-roles">Machine Learning Engineer</div>
     <p class="hero-desc">
       Data Scientist &amp; ML Engineer specializing in LLMs, deep learning, and scalable data pipelines.
       Currently pursuing M.S. in Data Science at the University of San Francisco.
@@ -1141,22 +1141,6 @@ document.getElementById('hamburger').addEventListener('click', () => document.ge
 document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
 function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-/* ===== TYPEWRITER ===== */
-const roles = ['Data Scientist', 'ML Engineer', 'LLM Developer', 'Deep Learning Researcher', 'Data Engineer'];
-let ri = 0, ci = 0, del = false;
-const typed = document.getElementById('typed-text');
-function typeWriter() {
-  const cur = roles[ri];
-  if (!del) {
-    typed.textContent = cur.slice(0, ++ci);
-    if (ci === cur.length) { del = true; return setTimeout(typeWriter, 2000); }
-  } else {
-    typed.textContent = cur.slice(0, --ci);
-    if (ci === 0) { del = false; ri = (ri + 1) % roles.length; }
-  }
-  setTimeout(typeWriter, del ? 55 : 95);
-}
-typeWriter();
 
 /* ===== COUNTERS ===== */
 function counter(el, target, dur = 1800) {
