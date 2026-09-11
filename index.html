@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayush Srivastava | AI Data Engineer</title>
+  <title>Ayush Srivastava | Research Engineer — LLM Evaluation &amp; Benchmarking</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -209,21 +209,6 @@
       text-decoration: none; border: 1px solid var(--border-bright); transition: all 0.3s;
     }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-    .hero-stats {
-      display: flex; gap: 40px; flex-wrap: wrap;
-      margin-top: 56px; padding-top: 40px; padding-bottom: 60px; border-top: 1px solid var(--border);
-      animation: fadeInUp 0.6s 0.5s ease both;
-    }
-    .hero-stat .num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem; font-weight: 700;
-    }
-    .hero-stat .num span {
-      background: var(--accent);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero-stat .label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
-
     .scroll-indicator {
       position: absolute; bottom: 56px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -408,6 +393,45 @@
       color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: all 0.2s;
     }
     .proj-link:hover { border-color: var(--accent); color: var(--accent); }
+    .proj-badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+
+    /* Other / coursework projects (collapsed) */
+    .other-projects { margin-top: 56px; border-top: 1px solid var(--border); padding-top: 34px; }
+    .other-projects > summary {
+      cursor: pointer; list-style: none; display: inline-flex; align-items: baseline; gap: 10px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--text-secondary); transition: color 0.2s;
+    }
+    .other-projects > summary::-webkit-details-marker { display: none; }
+    .other-projects > summary:hover { color: var(--accent); }
+    .other-projects > summary::before {
+      content: '\25B8'; color: var(--accent); display: inline-block; transition: transform 0.2s;
+    }
+    .other-projects[open] > summary::before { transform: rotate(90deg); }
+    .other-projects .projects-grid { margin-top: 28px; }
+    .other-sub { font-size: 0.8rem; font-weight: 400; font-family: 'Inter', sans-serif; color: var(--text-muted); }
+
+    /* ===== PUBLICATIONS ===== */
+    #publications { background: var(--bg-secondary); }
+    .pub-list { display: flex; flex-direction: column; gap: 22px; max-width: 900px; margin: 0 auto; }
+    .pub-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px; transition: all 0.3s;
+    }
+    .pub-card:hover { border-color: var(--accent); box-shadow: var(--shadow-card); }
+    .pub-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 13px; }
+    .pub-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.08rem;
+      font-weight: 700; line-height: 1.35; margin-bottom: 6px;
+    }
+    .pub-venue { font-size: 0.84rem; color: var(--accent); font-weight: 500; margin-bottom: 13px; }
+    .pub-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .pub-metrics {
+      display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+      margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .pub-metric { font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .pub-metric .hi { color: var(--accent); font-weight: 600; }
 
     /* ===== EDUCATION ===== */
     #education { background: var(--bg-secondary); }
@@ -543,6 +567,9 @@
     .d4 { transition-delay: 0.4s; }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1040px) {
+      .nav-links { gap: 22px; }
+    }
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; gap: 44px; }
       .about-visual { max-width: 280px; margin: 0 auto; }
@@ -558,7 +585,6 @@
       .form-row { grid-template-columns: 1fr; }
       .about-highlights { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
-      .hero-stats { gap: 20px; }
       .section { padding: 72px 0; }
       .edu-grid { grid-template-columns: 1fr; }
     }
@@ -580,6 +606,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -594,6 +621,7 @@
   <a href="#about"      onclick="closeMobileMenu()">About</a>
   <a href="#skills"     onclick="closeMobileMenu()">Skills</a>
   <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+  <a href="#publications" onclick="closeMobileMenu()">Publications</a>
   <a href="#projects"   onclick="closeMobileMenu()">Projects</a>
   <a href="#education"  onclick="closeMobileMenu()">Education</a>
   <a href="#contact"    onclick="closeMobileMenu()">Contact</a>
@@ -607,21 +635,15 @@
       <span class="first">Ayush</span><br>
       <span class="last">Srivastava</span>
     </h1>
-    <div class="hero-roles">AI Data Engineer</div>
+    <div class="hero-roles">Research Engineer — LLM Evaluation &amp; Benchmarking</div>
     <p class="hero-desc">
-      Building LLM-powered systems and scalable ML pipelines. M.S. in Data Science &amp; Artificial Intelligence from University of San Francisco.
+      I design benchmarks and rubrics that make model failures legible, then turn that evidence into measurable
+      improvements. M.S. in Data Science &amp; Artificial Intelligence from University of San Francisco.
     </p>
     <div class="hero-actions">
       <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
       <a href="#contact"  class="btn-secondary"><i class="fas fa-envelope"></i> Get In Touch</a>
       <a href="Ayush_Srivastava_Resume.pdf" download class="btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="num"><span id="s1">0</span>+</div><div class="label">Years Industry Experience</div></div>
-      <div class="hero-stat"><div class="num"><span id="s2">0</span>M+</div><div class="label">Records Processed</div></div>
-      <div class="hero-stat"><div class="num"><span id="s3">0</span>+</div><div class="label">Deep Learning Models Built</div></div>
-      <div class="hero-stat"><div class="num"><span id="s4">0</span>+</div><div class="label">Client Discussions Led</div></div>
-      <div class="hero-stat"><div class="num"><span id="s5">0</span></div><div class="label">Springer Publication</div></div>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -651,37 +673,39 @@
       </div>
       <div class="about-text reveal d2">
         <span class="section-label">About Me</span>
-        <h2>Building intelligent systems<br><span class="grad-text">from data to impact</span></h2>
+        <h2>Making model failure<br><span class="grad-text">measurable</span></h2>
         <p>
-          I'm a Data Scientist and ML Engineer with 4+ years of experience building end-to-end data pipelines,
-          developing deep learning models, and deploying LLM-powered solutions that drive real business value.
+          I'm a research engineer working on LLM evaluation: designing benchmarks, writing the rubrics that decide
+          what actually counts as a correct answer, and doing the failure analysis that turns a score into a fix.
         </p>
         <p>
-          At <strong style="color:var(--text-primary)">LexisNexis USA</strong>, I designed
-          LLM-powered legal document summarization pipelines reducing manual review time by 60–70%. Previously at
-          <strong style="color:var(--text-primary)">Axtria</strong>, I engineered scalable ETL pipelines processing
-          20M+ records across 6+ pharmaceutical domains.
+          That loop runs in production at <strong style="color:var(--text-primary)">LexisNexis</strong>, where I
+          benchmarked Claude Sonnet against Haiku on quality, cost, and latency, read the failure cases, and introduced
+          negative-example prompting that moved task accuracy from 75% to 91%. A legal-summarization workflow I shipped
+          went from a <strong style="color:var(--text-primary)">94% to 100% SME pass rate</strong> the same way:
+          look at what broke, then change one thing.
         </p>
         <p>
-          My research spans RAG systems, computer vision, time-series forecasting, and generative AI — including a
-          <strong style="color:var(--text-primary)">published Springer paper</strong> on real-time driver drowsiness detection.
+          The instinct for interrogating data came from four years of data engineering at
+          <strong style="color:var(--text-primary)">Axtria</strong>, moving 20M+ records per refresh across 8+ vendor
+          feeds and learning not to trust a number until I know exactly how it was produced.
         </p>
         <div class="about-highlights">
           <div class="highlight-item">
-            <div class="highlight-icon"><i class="fas fa-brain"></i></div>
-            <div><div class="highlight-title">LLM & RAG Systems</div><div class="highlight-sub">Fine-tuning, QLoRA, FAISS</div></div>
+            <div class="highlight-icon"><i class="fas fa-flask"></i></div>
+            <div><div class="highlight-title">Benchmark Design</div><div class="highlight-sub">Item curation, strict rubrics</div></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fas fa-scale-balanced"></i></div>
+            <div><div class="highlight-title">LLM-as-Judge</div><div class="highlight-sub">Inter-rater agreement</div></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon"><i class="fas fa-bug"></i></div>
+            <div><div class="highlight-title">Failure Analysis</div><div class="highlight-sub">Error taxonomies → prompt fixes</div></div>
           </div>
           <div class="highlight-item">
             <div class="highlight-icon"><i class="fas fa-database"></i></div>
-            <div><div class="highlight-title">Data Engineering</div><div class="highlight-sub">AWS, Redshift, Matillion</div></div>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-icon"><i class="fas fa-eye"></i></div>
-            <div><div class="highlight-title">Computer Vision</div><div class="highlight-sub">CNN, Transfer Learning</div></div>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
-            <div><div class="highlight-title">Data Visualization</div><div class="highlight-sub">Tableau, 27+ dashboards</div></div>
+            <div><div class="highlight-title">Data Engineering</div><div class="highlight-sub">20M+ records, AWS, Redshift</div></div>
           </div>
         </div>
       </div>
@@ -700,47 +724,49 @@
     <div class="skills-grid">
       <div class="skill-cat reveal d1">
         <div class="skill-cat-header">
+          <div class="cat-icon icon-blue"><i class="fas fa-scale-balanced"></i></div>
+          <div class="cat-title">Evaluation &amp; Benchmarking</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Rubric Design</span><span class="tag">LLM-as-Judge</span><span class="tag">Inter-Rater Agreement</span>
+          <span class="tag">Significance Testing</span><span class="tag">Non-Parametric Tests</span>
+          <span class="tag">Binomial Testing</span><span class="tag">Adversarial Validation</span><span class="tag">Failure Analysis</span>
+          <span class="tag">Ablation Studies</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal d2">
+        <div class="skill-cat-header">
           <div class="cat-icon icon-blue"><i class="fas fa-brain"></i></div>
           <div class="cat-title">AI &amp; Machine Learning</div>
         </div>
         <div class="tags">
-          <span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">QLoRA</span>
-          <span class="tag">BitsAndBytes</span><span class="tag">FAISS</span><span class="tag">Transformers</span>
-          <span class="tag">Scikit-Learn</span><span class="tag">TensorFlow</span><span class="tag">Keras</span>
-          <span class="tag">Dlib</span>
+          <span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">RAG</span>
+          <span class="tag">QLoRA</span><span class="tag">FAISS</span><span class="tag">Sentence Transformers</span>
+          <span class="tag">Transformers</span><span class="tag">Prompt Engineering</span><span class="tag">Scikit-Learn</span>
+          <span class="tag">TensorFlow</span><span class="tag">LightGBM</span>
+          <span class="tag">LSTM / GRU</span><span class="tag">Random Forests</span><span class="tag">PCA</span>
         </div>
       </div>
-      <div class="skill-cat reveal d2">
+      <div class="skill-cat reveal d3">
         <div class="skill-cat-header">
           <div class="cat-icon icon-purple"><i class="fas fa-code"></i></div>
           <div class="cat-title">Programming Languages</div>
         </div>
         <div class="tags">
-          <span class="tag">Python</span><span class="tag">SQL</span>
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Spark / PySpark</span>
           <span class="tag">C / C++</span><span class="tag">MATLAB</span>
         </div>
       </div>
-      <div class="skill-cat reveal d3">
+      <div class="skill-cat reveal d4">
         <div class="skill-cat-header">
           <div class="cat-icon icon-cyan"><i class="fas fa-cloud"></i></div>
           <div class="cat-title">Data &amp; Cloud</div>
         </div>
         <div class="tags">
-          <span class="tag">AWS</span><span class="tag">Redshift</span><span class="tag">Matillion</span>
-          <span class="tag">Tableau</span><span class="tag">NumPy</span><span class="tag">Pandas</span>
-          <span class="tag">Matplotlib</span><span class="tag">NLTK</span><span class="tag">Linux</span>
-        </div>
-      </div>
-      <div class="skill-cat reveal d4">
-        <div class="skill-cat-header">
-          <div class="cat-icon icon-green"><i class="fas fa-chart-bar"></i></div>
-          <div class="cat-title">Statistical Models</div>
-        </div>
-        <div class="tags">
-          <span class="tag">Linear Regression</span><span class="tag">Logistic Regression</span>
-          <span class="tag">Decision Trees</span><span class="tag">Random Forests</span>
-          <span class="tag">K-Means</span><span class="tag">PCA</span>
-          <span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag">VAE</span>
+          <span class="tag">AWS</span><span class="tag">Redshift</span><span class="tag">GCP</span>
+          <span class="tag">Dataproc</span><span class="tag">BigQuery</span><span class="tag">Airflow</span>
+          <span class="tag">Matillion</span><span class="tag">Docker</span><span class="tag">FastAPI</span>
+          <span class="tag">Pandas</span><span class="tag">Tableau</span>
         </div>
       </div>
     </div>
@@ -759,15 +785,14 @@
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-top"><div class="tl-role">Data Scientist Intern</div><span class="tl-period">Dec 2025 – Jun 2026</span></div>
-          <div class="tl-company">LexisNexis USA</div>
-          <div class="tl-loc">📍 San Francisco Bay Area, CA (Remote)</div>
+          <div class="tl-top"><div class="tl-role">AI Engineering Intern</div><span class="tl-period">Dec 2025 – Jun 2026</span></div>
+          <div class="tl-company">LexisNexis</div>
+          <div class="tl-loc">📍 San Francisco Bay Area, CA</div>
           <ul class="tl-bullets">
-            <li>Deployed LLM-powered summarization system via Python and proxy API, raising performance score from <strong>94.74%</strong> to <strong>100%</strong>.</li>
-            <li>Benchmarked Claude Sonnet vs Haiku on cost, output quality, and latency across <strong>20+ test cases</strong>, increasing accuracy from <strong>75%</strong> to <strong>91%</strong>.</li>
-            <li>Built a batch script for <strong>100+ PDF, DOCX, HTML</strong> files via pdfplumber, docx2txt, BeautifulSoup, cutting prep time by <strong>90%</strong>.</li>
-            <li>Extended the production pipeline with a new Python task generating and mapping UUIDs to route dual LLM calls and deliver structured outputs to the frontend.</li>
-            <li>Drove accuracy improvements by incorporating SME feedback cycles to iteratively refine LLM outputs across <strong>2+ projects</strong>.</li>
+            <li>Benchmarked <strong>Claude Sonnet vs. Haiku</strong> across quality, cost, and latency; analyzed the failure cases and introduced negative-example prompting, lifting task accuracy from <strong>75% to 91%</strong>.</li>
+            <li>Built and shipped an LLM legal-summarization workflow, iterating on prompts and error patterns to raise the <strong>SME pass rate from 94% to 100%</strong>.</li>
+            <li>Developed and evaluated a multi-stage LLM attribution pipeline mapping generated summary segments to supporting source passages — <strong>85% grounding accuracy</strong> across <strong>500+ mappings</strong>, improving traceability of model outputs.</li>
+            <li>Ran structured SME feedback cycles as the evaluation signal, converting reviewer disagreements into concrete prompt and pipeline changes across <strong>2+ projects</strong>.</li>
           </ul>
         </div>
       </div>
@@ -775,47 +800,20 @@
       <div class="tl-item reveal d1">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-top"><div class="tl-role">Senior Data Engineer</div><span class="tl-period">May 2023 – May 2025</span></div>
+          <div class="tl-top"><div class="tl-role">Analyst (2021) → Associate (2022) → Senior Associate (2023), Data Engineer</div><span class="tl-period">Jul 2021 – May 2025</span></div>
           <div class="tl-company">Axtria – Ingenious Insights</div>
           <div class="tl-loc">📍 Gurgaon, India</div>
           <ul class="tl-bullets">
-            <li>Led ETL development and feature engineering across <strong>6+ domains</strong>, productizing API wrappers within an in-house ETL product to integrate <strong>10+ reports</strong> into Tableau.</li>
-            <li>Processed and modeled <strong>20M+ records</strong> from 8+ vendors, generating <strong>30+ actionable insights</strong> for 6+ pharmaceutical products.</li>
-            <li>Optimized data ingestion pipelines, boosting efficiency by <strong>40%</strong> via automation with SQL, Python, Matillion, and AWS Redshift.</li>
-            <li>Collaborated with cross-functional teams to automate and integrate the delivery of <strong>30+ Excel-based reports</strong> into <strong>5+ dynamic dashboards</strong> using Python and SQL.</li>
-            <li>Performed data quality validation with <strong>100+ JIRA test cases</strong> to ensure defect-free pipelines.</li>
+            <li>Led <strong>$1M+</strong> new-product onboarding as primary business and data SME, directing 3 developers through QA, UAT, and production; delivered on time and secured <strong>3 follow-on projects</strong>.</li>
+            <li>Built Matillion pipelines ingesting and standardizing <strong>20M+</strong> sales, transaction, customer-master, and customer-engagement records per refresh from <strong>8+ vendor feeds</strong> via SFTP and Amazon S3, feeding presentation tables behind <strong>50+ dashboards</strong>.</li>
+            <li>Cut weekly pipeline runtime from 5 hours to 3 (<strong>40%</strong>) by optimizing row-expanding SQL joins and pruning unused columns in AWS Redshift, freeing capacity to start QA a day earlier each cycle across 6+ products.</li>
+            <li>Built a mastered customer universe in AWS Redshift, unifying <strong>300K+ customer profiles</strong> via attribute-level survivorship and SCD Type 2 history, serving 5 products and 3 downstream analytics teams.</li>
+            <li>Built sales-operations pipelines combining customer targets, CRM territory alignments, and outreach plans on a weekly refresh, serving <strong>35+ reps</strong> plus regional and national sales leadership across 4 product lines.</li>
           </ul>
         </div>
       </div>
 
       <div class="tl-item reveal d2">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top"><div class="tl-role">Data Engineer</div><span class="tl-period">May 2022 – Apr 2023</span></div>
-          <div class="tl-company">Axtria – Ingenious Insights</div>
-          <div class="tl-loc">📍 Gurgaon, India</div>
-          <ul class="tl-bullets">
-            <li>Spearheaded a team of 3 to build Tableau dashboards visualizing <strong>20+ KPIs</strong> for 4+ teams, improving sprint planning efficiency by <strong>60%</strong>.</li>
-            <li>Led <strong>40+ client discussions</strong> across 4 projects, aligning business requirements with technical delivery.</li>
-            <li>Automated legacy reports with data reconciliation, improving BI accuracy by <strong>15%</strong>.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal d3">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top"><div class="tl-role">Data Analyst</div><span class="tl-period">Jul 2021 – Apr 2022</span></div>
-          <div class="tl-company">Axtria – Ingenious Insights</div>
-          <div class="tl-loc">📍 Gurgaon, India</div>
-          <ul class="tl-bullets">
-            <li>Managed weekly refresh of <strong>100+ KPIs</strong> across <strong>27+ dashboards</strong> using statistical aggregation for 35+ sales reps.</li>
-            <li>Led <strong>5+ weekly ad-hoc EDA requests</strong>, partnering with commercial excellence and data quality teams.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tl-item reveal d4">
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-top"><div class="tl-role">Data Scientist Intern</div><span class="tl-period">May 2020 – Jul 2020</span></div>
@@ -831,30 +829,77 @@
   </div>
 </section>
 
+<!-- ===== PUBLICATIONS ===== -->
+<section id="publications" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Research Output</span>
+      <h2 class="section-title">Papers &amp; <span>Publications</span></h2>
+      <p class="section-subtitle">Peer-reviewed work in applied deep learning.</p>
+    </div>
+
+    <div class="pub-list">
+
+      <div class="pub-card reveal">
+        <div class="pub-badges">
+          <span class="badge badge-pub">Published · Springer</span>
+        </div>
+        <div class="pub-title">Driver Drowsiness Detection using GRU with CNN Features</div>
+        <div class="pub-venue">IAPR CVIP 2020 · Springer · Dec 2020</div>
+        <div class="pub-desc">
+          A Conv1D-GRU yawn detector trained on AffectNet (1M records), reaching
+          <strong style="color:var(--text-primary)">99.97% validation accuracy</strong> while holding real-time
+          throughput at 30 FPS on host hardware and 23 FPS on an embedded target.
+        </div>
+        <div class="pub-metrics">
+          <span class="pub-metric">Val accuracy <span class="hi">99.97%</span></span>
+          <span class="pub-metric">Host <span class="hi">30 FPS</span></span>
+          <span class="pub-metric">Embedded <span class="hi">23 FPS</span></span>
+          <a href="https://doi.org/10.1007/978-981-16-1103-2_42" target="_blank" class="proj-link" title="DOI"><i class="fas fa-external-link-alt"></i></a>
+          <a href="https://github.com/sayush2807/Driver-Drowsiness-Detection-using-GRU-with-CNN-features" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ===== PROJECTS ===== -->
 <section id="projects" class="section">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-label">What I've Built</span>
       <h2 class="section-title">Featured <span>Projects</span></h2>
-      <p class="section-subtitle">ML research, deep learning systems, and data engineering solutions.</p>
+      <p class="section-subtitle">Benchmarks, evaluation pipelines, and the ML systems behind them.</p>
     </div>
     <div class="filter-row reveal">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="nlp">NLP / LLM</button>
-      <button class="filter-btn" data-filter="cv">Computer Vision</button>
       <button class="filter-btn" data-filter="ts">Time Series</button>
-      <button class="filter-btn" data-filter="gen">Generative AI</button>
+      <button class="filter-btn" data-filter="cv">Computer Vision</button>
     </div>
-    <div class="projects-grid">
+    <div class="projects-grid" id="featured-grid">
 
-      <div class="proj-card reveal" data-category="nlp">
+      <div class="proj-card reveal" data-category="ts">
+        <div class="proj-head">
+          <div class="proj-icon">🏥</div>
+          <span class="badge badge-research">Research</span>
+        </div>
+        <div class="proj-title">ER Vital Signs Prediction</div>
+        <div class="proj-desc">Placed 2nd in class forecasting ER vital signs across 14,420 observations and 1,596 patients, cutting validation MAE from 4.0 to 3.0. Engineered 520+ temporal and cross-observation features behind a two-model residual architecture pairing a GRU sequence model with LightGBM under soft gating and Huber loss. A final ablation across 6 variants caught a NaN-imputation ordering bug worth 0.078 MAE and trimmed the 7-model ensemble to 3 at a cost of 0.0007 CV.</div>
+        <div class="proj-tech">
+          <span>LightGBM</span><span>GRU</span><span>PyTorch</span><span>GroupKFold</span><span>Ablation Study</span>
+        </div>
+        <div class="proj-metric">Validation MAE <span class="hi">4.0 → 3.0</span> · 520+ features · adversarial AUC <span class="hi">0.9998</span> under GroupKFold by patient</div>
+      </div>
+
+      <div class="proj-card reveal d1" data-category="nlp">
         <div class="proj-head">
           <div class="proj-icon">🏛️</div>
           <span class="badge badge-research">Research</span>
         </div>
         <div class="proj-title">Legal AI Assistant — RAG &amp; QLoRA on LexGLUE</div>
-        <div class="proj-desc">RAG pipeline on LexGLUE CaseHOLD using Mistral 7B with three retrieval strategies. FAISS semantic retrieval over Legal-BERT (768d) embeddings. Quantized to 4-bit with QLoRA, training 33.5M params, reducing model size from 28 GB to 3.5 GB.</div>
+        <div class="proj-desc">Benchmarked 3 retrieval strategies across 1,000 LexGLUE records and 200 held-out test cases, with the best reaching 0.90 cosine similarity. FAISS semantic retrieval over Legal-BERT (768-d) embeddings, generating with Mistral 7B fine-tuned via 4-bit QLoRA — 33.5M trained parameters, model size cut from 28 GB to 3.5 GB.</div>
         <div class="proj-tech">
           <span>Mistral 7B</span><span>QLoRA</span><span>RAG</span><span>FAISS</span><span>Legal-BERT</span><span>LexGLUE</span>
         </div>
@@ -863,52 +908,25 @@
         </div>
       </div>
 
-      <div class="proj-card reveal d1" data-category="nlp">
-        <div class="proj-head">
-          <div class="proj-icon">🍳</div>
-        </div>
-        <div class="proj-title">Cuisine Classifier — FastAPI + MLflow + GCP</div>
-        <div class="proj-desc">Recipe-to-cuisine classifier on 39,774 Yummly recipes from public Kaggle dataset. End-to-end ML Ops pipeline: training notebook with MLflow tracking, FastAPI inference service, Dockerized deployment on GCP. USF MSDS ML Ops course project.</div>
-        <div class="proj-tech">
-          <span>scikit-learn</span><span>FastAPI</span><span>Docker</span><span>MLflow</span><span>GCP</span>
-        </div>
-        <div class="proj-metric">Test accuracy: <span class="hi">78.72%</span> · 39,774 recipes
-          &nbsp;<a href="https://github.com/sayush2807/cuisine-classifier" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-
       <div class="proj-card reveal d2" data-category="ts">
-        <div class="proj-head">
-          <div class="proj-icon">🏥</div>
-          <span class="badge badge-research">Research</span>
-        </div>
-        <div class="proj-title">ER Vital Signs Prediction</div>
-        <div class="proj-desc">Finished 2nd in class competition forecasting ER patient vital signs on 14,420 observations across 1,596 patients. 30 LightGBM models with zero tuned post-processing parameters. Two-model residual architecture combining a GRU sequence model and LightGBM ensemble under Huber loss.</div>
-        <div class="proj-tech">
-          <span>LightGBM</span><span>GRU</span><span>PyTorch</span><span>GroupKFold</span><span>Python</span>
-        </div>
-        <div class="proj-metric">520+ features · adversarial AUC <span class="hi">0.9998</span> under GroupKFold by patient</div>
-      </div>
-
-      <div class="proj-card reveal d3" data-category="ts">
         <div class="proj-head">
           <div class="proj-icon">💳</div>
         </div>
         <div class="proj-title">Scalable Fraud Detection — Spark + Airflow on GCP</div>
-        <div class="proj-desc">Trained 4 Spark MLlib classifiers (Logistic Regression, Decision Tree, Random Forest, GBT) on 6M+ transactions; GBT achieved ROC-AUC 0.9994 on 1.27M test rows. Built distributed training pipeline on GCP Dataproc with Apache Spark, orchestrated via Airflow, with raw data in GCS and predictions in MongoDB Atlas.</div>
+        <div class="proj-desc">Trained 4 Spark MLlib classifiers (Logistic Regression, Decision Tree, Random Forest, GBT) on 6M+ transactions at 0.13% positive rate; GBT reached ROC-AUC 0.9994 at 99.5% recall on 1.27M test rows. Distributed training on GCP Dataproc, orchestrated with Airflow, raw data in GCS and predictions in MongoDB Atlas.</div>
         <div class="proj-tech">
           <span>PySpark</span><span>Spark MLlib</span><span>GCP Dataproc</span><span>Airflow</span><span>MongoDB</span>
         </div>
-        <div class="proj-metric">ROC-AUC: <span class="hi">0.9994</span> · 6M+ transactions · 0.13% class imbalance handled via stratified undersampling</div>
+        <div class="proj-metric">ROC-AUC: <span class="hi">0.9994</span> · recall <span class="hi">99.5%</span> · 6M+ transactions · 0.13% class imbalance</div>
       </div>
 
-      <div class="proj-card reveal d2" data-category="cv">
+      <div class="proj-card reveal d3" data-category="cv">
         <div class="proj-head">
           <div class="proj-icon">🚗</div>
           <span class="badge badge-pub">Published · Springer</span>
         </div>
         <div class="proj-title">Real-Time Driver Drowsiness Detection (GRU + CNN)</div>
-        <div class="proj-desc">Published at IAPRC CVIP 2020 — Springer. Conv1D-GRU yawn detector trained on AffectNet (1M records). Achieved 99.97% validation accuracy and real-time performance at 30 FPS.</div>
+        <div class="proj-desc">Published at IAPR CVIP 2020 — Springer. Conv1D-GRU yawn detector trained on AffectNet (1M records), reaching 99.97% validation accuracy at 30 FPS on host hardware and 23 FPS on an embedded target.</div>
         <div class="proj-tech">
           <span>CNN</span><span>GRU</span><span>Dlib</span><span>InceptionV3</span><span>DenseNet</span><span>OpenCV</span>
         </div>
@@ -918,67 +936,86 @@
         </div>
       </div>
 
-      <div class="proj-card reveal d3" data-category="cv">
-        <div class="proj-head"><div class="proj-icon">🏗️</div></div>
-        <div class="proj-title">Structural Damage Detection via CNN &amp; Transfer Learning</div>
-        <div class="proj-desc">Image classification pipeline detecting 4 structural damage types using VGG16 transfer learning on 2,600+ images. Data augmentation improved minority class representation from 8% to 26%.</div>
-        <div class="proj-tech">
-          <span>VGG16</span><span>TensorFlow</span><span>Keras</span><span>Transfer Learning</span><span>Data Augmentation</span>
-        </div>
-        <div class="proj-metric">Test accuracy: <span class="hi">91.47%</span> · Baseline CNN: <span class="hi">58.7%</span></div>
-      </div>
-
-      <div class="proj-card reveal" data-category="ts">
-        <div class="proj-head"><div class="proj-icon">🚦</div></div>
-        <div class="proj-title">Traffic Flow Prediction (LSTM, GRU, MLP)</div>
-        <div class="proj-desc">Deep learning models for time-series traffic forecasting using 12,000+ data points from California PeMS dataset. Sliding window pipeline (size=8) capturing temporal dependencies across three architectures.</div>
-        <div class="proj-tech">
-          <span>LSTM</span><span>GRU</span><span>MLP</span><span>TensorFlow</span><span>Time Series</span>
-        </div>
-        <div class="proj-metric">LSTM RMSE: <span class="hi">9.81</span> · R²: <span class="hi">0.9398</span> · +11% vs baseline</div>
-      </div>
-
-      <div class="proj-card reveal d1" data-category="gen">
-        <div class="proj-head"><div class="proj-icon">🎭</div></div>
-        <div class="proj-title">Face Generation with DCGAN</div>
-        <div class="proj-desc">Trained a Deep Convolutional GAN on the CelebA dataset to generate realistic human faces. Implemented Discriminator and Generator using Conv and Transpose Conv layers in PyTorch.</div>
-        <div class="proj-tech">
-          <span>DCGAN</span><span>PyTorch</span><span>CelebA</span><span>Generative AI</span>
-        </div>
-        <div class="proj-metric">Discriminator loss: <span class="hi">0.06</span> · Generator loss: <span class="hi">0.56</span></div>
-      </div>
-
-      <div class="proj-card reveal d2" data-category="gen">
-        <div class="proj-head"><div class="proj-icon">📺</div></div>
-        <div class="proj-title">TV Script Generation with LSTM-RNN</div>
-        <div class="proj-desc">Text generation model trained on 9 seasons of Seinfeld scripts using multi-layer LSTM in PyTorch. Complete NLP pipeline: tokenization, vocabulary encoding, sequence batching, and coherent dialogue generation.</div>
-        <div class="proj-tech">
-          <span>LSTM</span><span>RNN</span><span>NLP</span><span>PyTorch</span><span>Text Generation</span>
-        </div>
-        <div class="proj-metric">Trained on <span class="hi">9 seasons</span> · Generates coherent multi-character dialogues</div>
-      </div>
-
-      <div class="proj-card reveal" data-category="ts">
-        <div class="proj-head"><div class="proj-icon">💧</div></div>
-        <div class="proj-title">Neural Networks vs ANFIS — Water Storage Prediction</div>
-        <div class="proj-desc">Compared LSTM (Keras/Python) and ANFIS (MATLAB) for reservoir storage forecasting using weekly time-series data of Mettur Dam, Chennai (2001–2013).</div>
-        <div class="proj-tech">
-          <span>LSTM</span><span>ANFIS</span><span>MATLAB</span><span>Keras</span><span>Time Series</span>
-        </div>
-        <div class="proj-metric">LSTM Test RMSE: <span class="hi">7.87</span> · ANFIS Test RMSE: <span class="hi">8.12</span></div>
-      </div>
-
-      <div class="proj-card reveal d1" data-category="cv">
-        <div class="proj-head"><div class="proj-icon">🐕</div></div>
-        <div class="proj-title">Dog Breed Classification (CNNs + Transfer Learning)</div>
-        <div class="proj-desc">End-to-end CV pipeline in PyTorch to classify dog breeds and identify resembling dog breeds for human faces. Integrated Haar Cascade + pretrained CNNs in a modular inference pipeline for web/mobile deployment.</div>
-        <div class="proj-tech">
-          <span>PyTorch</span><span>CNN</span><span>Transfer Learning</span><span>Haar Cascade</span>
-        </div>
-        <div class="proj-metric">Human-to-breed matching · Modular <span class="hi">real-time inference</span> pipeline</div>
-      </div>
-
     </div>
+
+    <details class="other-projects reveal">
+      <summary>Other projects <span class="other-sub">— coursework &amp; earlier work (7)</span></summary>
+      <div class="projects-grid">
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">🍳</div></div>
+          <div class="proj-title">Cuisine Classifier — FastAPI + MLflow + GCP</div>
+          <div class="proj-desc">Recipe-to-cuisine classifier on 39,774 Yummly recipes. End-to-end ML Ops pipeline: MLflow-tracked training, FastAPI inference service, Dockerized deployment on GCP. USF MSDS ML Ops course project.</div>
+          <div class="proj-tech">
+            <span>scikit-learn</span><span>FastAPI</span><span>Docker</span><span>MLflow</span><span>GCP</span>
+          </div>
+          <div class="proj-metric">Test accuracy: <span class="hi">78.72%</span> · 39,774 recipes
+            &nbsp;<a href="https://github.com/sayush2807/cuisine-classifier" target="_blank" class="proj-link" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">🏗️</div></div>
+          <div class="proj-title">Structural Damage Detection via CNN &amp; Transfer Learning</div>
+          <div class="proj-desc">Image classification pipeline detecting 4 structural damage types using VGG16 transfer learning on 2,600+ images. Data augmentation improved minority class representation from 8% to 26%.</div>
+          <div class="proj-tech">
+            <span>VGG16</span><span>TensorFlow</span><span>Keras</span><span>Transfer Learning</span>
+          </div>
+          <div class="proj-metric">Test accuracy: <span class="hi">91.47%</span> · Baseline CNN: <span class="hi">58.7%</span></div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">🚦</div></div>
+          <div class="proj-title">Traffic Flow Prediction (LSTM, GRU, MLP)</div>
+          <div class="proj-desc">Deep learning models for time-series traffic forecasting using 12,000+ data points from the California PeMS dataset. Sliding-window pipeline (size=8) compared across three architectures.</div>
+          <div class="proj-tech">
+            <span>LSTM</span><span>GRU</span><span>MLP</span><span>TensorFlow</span>
+          </div>
+          <div class="proj-metric">LSTM RMSE: <span class="hi">9.81</span> · R²: <span class="hi">0.9398</span> · +11% vs baseline</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">🎭</div></div>
+          <div class="proj-title">Face Generation with DCGAN</div>
+          <div class="proj-desc">Trained a Deep Convolutional GAN on the CelebA dataset to generate realistic human faces. Discriminator and Generator built with Conv and Transpose Conv layers in PyTorch.</div>
+          <div class="proj-tech">
+            <span>DCGAN</span><span>PyTorch</span><span>CelebA</span><span>Generative AI</span>
+          </div>
+          <div class="proj-metric">Discriminator loss: <span class="hi">0.06</span> · Generator loss: <span class="hi">0.56</span></div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">📺</div></div>
+          <div class="proj-title">TV Script Generation with LSTM-RNN</div>
+          <div class="proj-desc">Text generation model trained on 9 seasons of Seinfeld scripts using a multi-layer LSTM in PyTorch. Full NLP pipeline: tokenization, vocabulary encoding, sequence batching, dialogue generation.</div>
+          <div class="proj-tech">
+            <span>LSTM</span><span>RNN</span><span>NLP</span><span>PyTorch</span>
+          </div>
+          <div class="proj-metric">Trained on <span class="hi">9 seasons</span> · Generates coherent multi-character dialogues</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">💧</div></div>
+          <div class="proj-title">Neural Networks vs ANFIS — Water Storage Prediction</div>
+          <div class="proj-desc">Compared LSTM (Keras/Python) and ANFIS (MATLAB) for reservoir storage forecasting using weekly time-series data from Mettur Dam, Chennai (2001–2013).</div>
+          <div class="proj-tech">
+            <span>LSTM</span><span>ANFIS</span><span>MATLAB</span><span>Keras</span>
+          </div>
+          <div class="proj-metric">LSTM Test RMSE: <span class="hi">7.87</span> · ANFIS Test RMSE: <span class="hi">8.12</span></div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-head"><div class="proj-icon">🐕</div></div>
+          <div class="proj-title">Dog Breed Classification (CNNs + Transfer Learning)</div>
+          <div class="proj-desc">End-to-end CV pipeline in PyTorch classifying dog breeds and matching human faces to resembling breeds. Haar Cascade plus pretrained CNNs in a modular inference pipeline.</div>
+          <div class="proj-tech">
+            <span>PyTorch</span><span>CNN</span><span>Transfer Learning</span><span>Haar Cascade</span>
+          </div>
+          <div class="proj-metric">Human-to-breed matching · Modular <span class="hi">real-time inference</span> pipeline</div>
+        </div>
+
+      </div>
+    </details>
   </div>
 </section>
 
@@ -993,10 +1030,10 @@
     <div class="edu-grid">
       <div class="edu-card reveal">
         <span class="edu-emoji">🎓</span>
-        <div class="edu-degree">M.S. in Data Science</div>
+        <div class="edu-degree">M.S. Data Science &amp; Artificial Intelligence</div>
         <div class="edu-school">University of San Francisco</div>
-        <div class="edu-loc">📍 San Francisco, CA</div>
-        <span class="edu-period">Jul 2025 – Jul 2026</span>
+        <div class="edu-loc">📍 San Francisco, CA &nbsp;·&nbsp; GPA 3.86 / 4.0</div>
+        <span class="edu-period">Jul 2025 – Jul 2026 · Completed</span>
       </div>
       <div class="edu-card reveal d2">
         <span class="edu-emoji">🏫</span>
@@ -1062,7 +1099,7 @@
     <div class="section-header reveal">
       <span class="section-label">Let's Connect</span>
       <h2 class="section-title">Get In <span>Touch</span></h2>
-      <p class="section-subtitle">Open to full-time roles, research collaborations, and interesting data science projects.</p>
+      <p class="section-subtitle">Open to research engineering roles, evaluation work, and research collaborations.</p>
     </div>
     <div class="contact-wrapper">
       <div class="contact-info reveal">
@@ -1141,27 +1178,6 @@ document.getElementById('menuClose').addEventListener('click', () => document.ge
 function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
 
-/* ===== COUNTERS ===== */
-function counter(el, target, dur = 1800) {
-  let n = 0, step = target / (dur / 16);
-  const t = setInterval(() => {
-    n = Math.min(n + step, target);
-    el.textContent = Math.floor(n);
-    if (n >= target) clearInterval(t);
-  }, 16);
-}
-let counted = false;
-new IntersectionObserver(([e]) => {
-  if (e.isIntersecting && !counted) {
-    counted = true;
-    counter(document.getElementById('s1'), 4);
-    counter(document.getElementById('s2'), 20);
-    counter(document.getElementById('s3'), 10);
-    counter(document.getElementById('s4'), 40);
-    counter(document.getElementById('s5'), 1, 800);
-  }
-}, { threshold: 0.5 }).observe(document.querySelector('.hero-stats'));
-
 /* ===== SCROLL REVEAL ===== */
 new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1179,7 +1195,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const f = btn.dataset.filter;
-    document.querySelectorAll('.proj-card').forEach(card => {
+    document.querySelectorAll('#featured-grid .proj-card').forEach(card => {
       const show = f === 'all' || card.dataset.category === f;
       card.style.display = show ? 'flex' : 'none';
       if (show) card.style.animation = 'fadeInUp 0.4s ease both';
